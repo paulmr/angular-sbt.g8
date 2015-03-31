@@ -9,11 +9,13 @@ lazy val root = (project in file("."))
 
 Revolver.settings
 
-Revolver.reStartArgs ++= Seq("path=" + WebKeys.stagingDirectory.value, "port=$webServerPort$")
+Revolver.reStartArgs ++= Seq("path=" + WebKeys.stagingDirectory.value, "port=8080")
 
 Revolver.reStart <<= Revolver.reStart.dependsOn(WebKeys.stage)
 
 // don't use std error by default as this confuses Revolver
 javaOptions in Revolver.reStart += "-Dorg.slf4j.simpleLogger.logFile=System.out"
 
-Revolver.reLogTag := "$name$"
+Revolver.reLogTag := "typescripttest"
+
+TypeScript.settings
