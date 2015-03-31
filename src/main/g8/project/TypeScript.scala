@@ -27,7 +27,8 @@ object TypeScript {
     },
     typescriptOptions := Seq("-m commonjs"),
     typescriptDefinitionsDir := ((sourceDirectory in Assets).value / "lib"),
-    typescriptDefinitions := Seq(typescriptDefinitionsDir.value / "angularjs" / "angular.d.ts")
+    typescriptDefinitions := Seq(typescriptDefinitionsDir.value / "angularjs" / "angular.d.ts"),
+    sourceGenerators in Assets <+= typescriptCompile
   )
 
 }
